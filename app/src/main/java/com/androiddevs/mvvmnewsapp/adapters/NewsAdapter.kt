@@ -1,18 +1,16 @@
 package com.androiddevs.mvvmnewsapp.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.databinding.ItemArticlePreviewBinding
 import com.androiddevs.mvvmnewsapp.models.Article
 import com.bumptech.glide.Glide
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
-    inner class ArticleViewHolder(private val binding: ItemArticlePreviewBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ArticleViewHolder(val binding: ItemArticlePreviewBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(article: Article) {
             binding.apply {
                 Glide.with(this.root).load(article.urlToImage).into(ivArticleImage)
@@ -20,8 +18,10 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
                 tvTitle.text = article.title
                 tvDescription.text = article.description
                 tvPublishedAt.text = article.publishedAt
+
+                //тут очевидно вся эта петрушка чтобы задать действие по нажатию отдельно. но зачем?  Best practice?
                 root.setOnClickListener{
-                    onItemClickListener?.let{it(article)}
+                    onItemClickListener?.let{ it(article) }
                 }
             }
         }
