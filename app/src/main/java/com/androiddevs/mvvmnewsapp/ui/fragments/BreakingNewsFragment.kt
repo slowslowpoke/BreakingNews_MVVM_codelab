@@ -16,11 +16,11 @@ import com.androiddevs.mvvmnewsapp.ui.NewsViewModel
 import com.androiddevs.mvvmnewsapp.util.Resource
 
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
-    val TAG = "BreakingNewsFragment"
+    private val TAG = "BreakingNewsFragment"
     private var _binding: FragmentBreakingNewsBinding? = null
     private val binding get() = _binding!!
-    lateinit var viewModel: NewsViewModel
-    lateinit var newsAdapter: NewsAdapter
+    private lateinit var viewModel: NewsViewModel
+    private lateinit var newsAdapter: NewsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
