@@ -18,12 +18,14 @@ data class Article(
     val urlToImage: String,
     val publishedAt: String,
     val content: String
-) : Serializable{
+) : Serializable {
+
+
+    //пока не добавила переопределение хешкода, приложение вылетало при попытке навигации в ArticleFragment
     override fun hashCode(): Int {
         var result = id.hashCode()
-        if(url.isEmpty()){
-            result = 31 * result + url.hashCode()
-        }
+        result = 31 * result + url.hashCode()
         return result
     }
+
 }
